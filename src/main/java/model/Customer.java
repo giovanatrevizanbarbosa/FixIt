@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Customer {
@@ -10,6 +11,7 @@ public class Customer {
 	private String cpf;
 	private String password;
 	private Boolean active;
+	private Address address;
 	
 	public Long getId() {
 		return id;
@@ -67,6 +69,14 @@ public class Customer {
 		this.active = active;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(id);
@@ -78,5 +88,19 @@ public class Customer {
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
         return Objects.equals(id, customer.id);
+	}
+
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", phone='" + phone + '\'' +
+				", email='" + email + '\'' +
+				", cpf='" + cpf + '\'' +
+				", password='" + password + '\'' +
+				", active=" + active +
+				", address=" + address +
+				'}';
 	}
 }

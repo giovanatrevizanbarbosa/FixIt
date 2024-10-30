@@ -9,7 +9,7 @@ public class Address {
     private String complement;
     private String neighborhood;
     private String city;
-    private String state;
+    private State state;
     private String cep;
 
     public Long getId() {
@@ -60,11 +60,11 @@ public class Address {
         this.city = city;
     }
 
-    public String getState() {
+    public State getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(State state) {
         this.state = state;
     }
 

@@ -7,10 +7,12 @@ public class ServiceOrder {
     private Long id;
     private String description;
     private LocalDate emissionDate;
-    private Double value;
+    private LocalDate completionDate;
+    private Double price;
     private String observation;
     private PaymentMethod paymentMethod;
     private Status status;
+    private Customer customer;
 
     public Long getId() {
         return id;
@@ -36,12 +38,20 @@ public class ServiceOrder {
         this.emissionDate = emissionDate;
     }
 
-    public Double getValue() {
-        return value;
+    public LocalDate getCompletionDate() {
+        return completionDate;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setCompletionDate(LocalDate completionDate) {
+        this.completionDate = completionDate;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public String getObservation() {
@@ -66,6 +76,14 @@ public class ServiceOrder {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
