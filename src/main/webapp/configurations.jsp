@@ -3,7 +3,7 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
 <!DOCTYPE html>
-<html data-theme="garden" class="full">
+<html data-theme="corporate" class="full">
 <head>
 <meta charset="UTF-8">
 <title>FixIt</title>
@@ -38,12 +38,12 @@
     </div>
 </c:if>
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 space-y-2">
-    <div class="collapse collapse-plus join-item bg-base-200">
+    <div class="collapse collapse-plus border-base-300 border">
         <input type="checkbox" name="collapse-metodos-pagamento" checked="checked" />
         <div class="collapse-title text-xl font-medium">Métodos de Pagamento</div>
         <div class="collapse-content">
             <div class="overflow-x-auto">
-                <table class="table">
+                <table class="table table-zebra">
                     <thead>
                     <tr>
                         <th></th>
@@ -66,5 +66,5 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="scripts/utils.js"></script>
-    </body>
-    </html>
+</body>
+</html>

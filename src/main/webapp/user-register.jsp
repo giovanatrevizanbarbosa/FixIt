@@ -37,14 +37,34 @@
 	</c:if>
 	<div class="min-h-full flex-col justify-center p-6 lg:px-8 h-screen">
 		<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
-			<form class="space-y-6"	 method="POST" action="novo-metodo-de-pagamento">
+			<form class="space-y-6"	 method="POST" action="novo-funcionario">
 				<input type="hidden" name="formToken" value="<%= formToken %>">
-				<h2 class="my-10 text-start text-2xl block font-medium leading-6 tracking-tight">Método de Pagamento</h2>
+				<h2 class="my-10 text-start text-2xl block font-medium leading-6 tracking-tight">Funcionário</h2>
 				<div class="flex flex-row justify-center gap-4 sm:mx-auto sm:w-full sm:max-w-lg">
 					<div class="sm:mx-auto sm:w-full sm:max-w-lg">
-						<label for="name" class="block text-sm font-medium leading-6">Nome</label>
+						<label for="email" class="block text-sm font-medium leading-6">E-mail</label>
 						<div class="mt-2">
-							<input id="name" name="name" type="text" autocomplete="name" required class="input input-bordered block w-full placeholder:text-gray-400 sm:text-sm sm:leading-6">
+							<input id="email" name="email" type="email" autocomplete="email" required
+								   class="input input-bordered block w-full placeholder:text-gray-400 sm:text-sm sm:leading-6">
+						</div>
+					</div>
+					<div class="sm:mx-auto sm:w-full sm:max-w-lg">
+						<label for="password" class="block text-sm font-medium leading-6 form-control">
+							<div class="flex justify-between items-center pt-1">
+								<span class="label-text">Senha</span>
+								<span class="label-text-alt"><i>deverá ser trocada no primeiro login</i></span>
+							</div>
+							<div class="mt-2">
+								<input id="password" name="password" type="password" autocomplete="password"
+									   required minlength="6"
+									   class="input input-bordered block w-full placeholder:text-gray-400 sm:text-sm sm:leading-6">
+							</div>
+						</label>
+						<div class="form-control">
+							<label class="label cursor-pointer" for="admin">
+								<span class="label-text">Administrador</span>
+								<input type="checkbox" id="admin" name="admin" class="toggle" value="false"/>
+							</label>
 						</div>
 					</div>
 				</div>
@@ -55,6 +75,6 @@
 	</div>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="scripts/utils.js"></script>
-	<script src="scripts/customer-register.js"></script>
+	<script src="scripts/user-register.js"></script>
 </body>
 </html>

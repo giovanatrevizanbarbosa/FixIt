@@ -5,7 +5,7 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
 <!DOCTYPE html>
-<html class="h-full" data-theme="garden">
+<html class="h-full" data-theme="corporate">
 <head>
 <meta charset="UTF-8">
 <title>FixIt</title>
@@ -22,16 +22,8 @@
 <jsp:include page="components/navbar.jsp"></jsp:include>
 	<c:if test="${result == 'notRegistered'}">
 		<div role="alert" class="alert alert-error fixed w-fit top-2 right-4 z-[99]">
-			<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-6 w-6 shrink-0 stroke-current"
-					fill="none"
-					viewBox="0 0 24 24">
-				<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 			</svg>
 			<span>Cadastro não pode ser concluído.</span>
 			<div>
@@ -47,7 +39,7 @@
 		<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
 			<form class="space-y-6"	 method="POST" action="nova-ordem-de-servico">
 				<input type="hidden" name="formToken" value="<%= formToken %>">
-				<h2 class="my-10 text-start text-2xl block font-medium leading-6 tracking-tight"></h2>
+				<h2 class="my-10 text-start text-2xl block font-medium leading-6 tracking-tight">Ordem de Serviço</h2>
 				<div class="flex flex-row justify-center gap-4 sm:mx-auto sm:w-full sm:max-w-lg">
 					<div class="sm:mx-auto sm:w-full sm:max-w-lg">
 						<label for="description" class="block text-sm font-medium leading-6">Descrição</label>

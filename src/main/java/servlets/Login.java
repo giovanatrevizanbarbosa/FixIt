@@ -7,12 +7,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Customer;
-import model.dao.CustomerDao;
+import model.User;
+import model.dao.UserDao;
 import utils.DataSourceSearcher;
-import utils.PasswordEncoder;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @WebServlet("/entrar")
 public class Login extends HttpServlet {
@@ -27,29 +27,29 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession(false);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/login.jsp");
         dispatcher.forward(req, resp);
+        session.removeAttribute("result");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        Customer customer = new Customer();
-        customer.setEmail(email);
-        customer.setPassword(PasswordEncoder.encode(password));
+        HttpSession session = req.getSession();
 
-        RequestDispatcher dispatcher = null;
-
-        CustomerDao customerDao = new CustomerDao(DataSourceSearcher.getInstance().getDataSource());
-        if(customerDao.getCustomerByEmailAndPassword(email, password) != null) {
-            session.setAttribute("customer", customer);
+        UserDao userDao = new UserDao(DataSourceSearcher.getInstance().getDataSource());
+        Optional<User> user = userDao.getUserByEmailAndPassword(email, password);
+        System.out.println(user);
+        if(user.isPresent()) {
+            session.setMaxInactiveInterval(600);
+            session.setAttribute("user", user.get());
             resp.sendRedirect(req.getContextPath() + "/inicio");
         }else{
-            resp.sendRedirect(req.getContextPath() + "/inicio");
+            session.setAttribute("result", "error");
+            resp.sendRedirect(req.getContextPath() + "/entrar");
         }
     }
 }
